@@ -1,0 +1,159 @@
+id: x-t-4-wezterm
+
+data:
+  - name:
+      en: overview
+      cn: 概览
+    qa:
+      - id: what-is-wezterm
+        question:
+          en: What is WezTerm?
+          cn: 什么是 WezTerm？
+        answer:
+          en: A GPU-accelerated terminal emulator written in Rust, with a built-in multiplexer and full Lua configuration / scripting. MIT licensed. Cross-platform: Linux, macOS, Windows, BSD.
+          cn: 用 Rust 编写的 GPU 加速终端模拟器，带内置多路复用器与完整 Lua 配置 / 脚本。MIT 协议。跨平台：Linux、macOS、Windows、BSD。
+        confidence: 9
+        reference:
+          - docs/4-wezterm.en.md
+          - docs/4-wezterm.cn.md
+
+      - id: what-makes-wezterm-different
+        question:
+          en: What makes WezTerm different from Alacritty / Kitty?
+          cn: WezTerm 与 Alacritty / Kitty 有何不同？
+        answer:
+          en: Alacritty bets on smallest + fastest. Kitty bets on image protocols + kittens. WezTerm bets on multiplexer + scripting in one terminal — Lua config can subscribe to runtime events.
+          cn: Alacritty 押注最小 + 最快。Kitty 押注图像协议 + kittens。WezTerm 押注多路复用 + 脚本一体——Lua 配置可订阅运行时事件。
+        confidence: 9
+        reference:
+          - docs/4-wezterm.en.md
+
+  - name:
+      en: install
+      cn: 安装
+    qa:
+      - id: how-to-install
+        question:
+          en: How do I install WezTerm?
+          cn: 如何安装 WezTerm？
+        answer:
+          en: Run x env use wezterm, use a package manager (brew install --cask wezterm on macOS, snap install wezterm on Linux, scoop install wezterm on Windows), or download from GitHub Releases.
+          cn: 运行 x env use wezterm，用包管理器（macOS 上 brew install --cask wezterm，Linux 上 snap install wezterm，Windows 上 scoop install wezterm），或从 GitHub Releases 下载。
+        confidence: 9
+        reference:
+          - docs/4-wezterm.en.md
+
+      - id: windows-supported
+        question:
+          en: Does WezTerm work on Windows?
+          cn: WezTerm 在 Windows 上能用吗？
+        answer:
+          en: Yes — WezTerm is one of the most Windows-friendly GPU terminals. Works on Windows 10+ with the same wezterm.lua as Linux and macOS.
+          cn: 可以 —— WezTerm 是 Windows 最友好的 GPU 终端之一。在 Windows 10+ 上可用，与 Linux 和 macOS 共用同一份 wezterm.lua。
+        confidence: 9
+        reference:
+          - docs/4-wezterm.en.md
+
+  - name:
+      en: configuration
+      cn: 配置
+    qa:
+      - id: config-language
+        question:
+          en: What config language does WezTerm use?
+          cn: WezTerm 用什么配置语言？
+        answer:
+          en: Lua — wezterm.lua is a full Lua program. You can define functions, watch files, subscribe to events, and call the WezTerm API at runtime.
+          cn: Lua——wezterm.lua 是完整的 Lua 程序。可以定义函数、监听文件、订阅事件、运行时调用 WezTerm API。
+        confidence: 9
+        reference:
+          - docs/4-wezterm.en.md
+
+      - id: live-config-reload
+        question:
+          en: Does WezTerm reload config without restart?
+          cn: WezTerm 能在不重启的情况下重载配置吗？
+        answer:
+          en: Yes — automatically_reload_config = true (default) makes WezTerm watch wezterm.lua and apply edits on save.
+          cn: 可以——automatically_reload_config = true（默认）让 WezTerm 监听 wezterm.lua，编辑保存即生效。
+        confidence: 9
+        reference:
+          - docs/4-wezterm.en.md
+
+  - name:
+      en: multiplexer
+      cn: 多路复用器
+    qa:
+      - id: built-in-mux
+        question:
+          en: Does WezTerm have a built-in multiplexer?
+          cn: WezTerm 有内置多路复用器吗？
+        answer:
+          en: Yes — via wezterm-mux-server. Panes via Ctrl+Alt+| (horizontal) and Ctrl+Alt+_ (vertical). Focus with Ctrl+Alt+h/j/k/l. For cross-machine sessions, pair with tmux or zellij.
+          cn: 有——通过 wezterm-mux-server。Ctrl+Alt+| 水平分屏，Ctrl+Alt+_ 垂直分屏。Ctrl+Alt+h/j/k/l 切换焦点。跨机器会话可搭配 tmux 或 zellij。
+        confidence: 9
+        reference:
+          - docs/4-wezterm.en.md
+
+      - id: split-pane-keys
+        question:
+          en: How do I split panes in WezTerm?
+          cn: WezTerm 中怎么分屏？
+        answer:
+          en: Ctrl+Alt+| for horizontal split, Ctrl+Alt+_ for vertical split, Ctrl+Alt+h/j/k/l to focus panes (left/down/up/right).
+          cn: Ctrl+Alt+| 水平分屏，Ctrl+Alt+_ 垂直分屏，Ctrl+Alt+h/j/k/l 切换焦点（左/下/上/右）。
+        confidence: 9
+        reference:
+          - docs/4-wezterm.en.md
+
+  - name:
+      en: features
+      cn: 功能
+    qa:
+      - id: image-protocols
+        question:
+          en: Which image protocols does WezTerm support?
+          cn: WezTerm 支持哪些图像协议？
+        answer:
+          en: iTerm2 (including animation) and Sixel. Kitty graphics protocol is not implemented.
+          cn: iTerm2（含动画）与 Sixel。Kitty graphics 协议未实现。
+        confidence: 9
+        reference:
+          - docs/4-wezterm.en.md
+
+      - id: ssh-domain
+        question:
+          en: What is the SSH domain?
+          cn: 什么是 SSH domain？
+        answer:
+          en: wezterm connect ssh://user@host opens an SSH session through local WezTerm, using local fonts, color schemes, and config. Similar to Kitty's kitten ssh.
+          cn: wezterm connect ssh://user@host 通过本地 WezTerm 打开 SSH 会话，使用本地字体、配色方案、配置。类似 Kitty 的 kitten ssh。
+        confidence: 9
+        reference:
+          - docs/4-wezterm.en.md
+
+      - id: lua-events
+        question:
+          en: Can WezTerm config subscribe to runtime events?
+          cn: WezTerm 配置能订阅运行时事件吗？
+        answer:
+          en: Yes — wezterm.on('event-name', handler) in wezterm.lua subscribes to window-focus-changed, open-uri, format-window-title, and many more.
+          cn: 能——在 wezterm.lua 里用 wezterm.on('event-name', handler) 订阅 window-focus-changed、open-uri、format-window-title 等众多事件。
+        confidence: 9
+        reference:
+          - docs/4-wezterm.en.md
+
+  - name:
+      en: license
+      cn: 协议
+    qa:
+      - id: license
+        question:
+          en: What license is WezTerm under?
+          cn: WezTerm 是什么协议？
+        answer:
+          en: MIT — permissive. Forking and distributing is fine; commercial use allowed.
+          cn: MIT——宽松。Fork 与分发没问题；允许商用。
+        confidence: 9
+        reference:
+          - docs/4-wezterm.en.md
