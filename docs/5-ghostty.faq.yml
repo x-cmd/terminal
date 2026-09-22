@@ -1,0 +1,144 @@
+id: x-t-5-ghostty
+
+data:
+  - name:
+      en: overview
+      cn: 概览
+    qa:
+      - id: what-is-ghostty
+        question:
+          en: What is Ghostty?
+          cn: 什么是 Ghostty？
+        answer:
+          en: A GPU-accelerated terminal emulator with native UI per platform — AppKit on macOS, GTK4/libadwaita on Linux, Win32 on Windows. Written by Mitchell Hashimoto. Zig core + Swift wrapper on macOS. MIT licensed.
+          cn: 带每平台原生 UI 的 GPU 加速终端模拟器——macOS 用 AppKit，Linux 用 GTK4/libadwaita，Windows 用 Win32。Mitchell Hashimoto 编写。Zig 核心 + macOS 上 Swift 包装。MIT 协议。
+        confidence: 9
+        reference:
+          - docs/5-ghostty.en.md
+          - docs/5-ghostty.cn.md
+
+      - id: what-makes-ghostty-different
+        question:
+          en: What makes Ghostty different from Alacritty / Kitty?
+          cn: Ghostty 与 Alacritty / Kitty 有何不同？
+        answer:
+          en: Alacritty and Kitty use cross-platform GUI toolkits (winit). Ghostty writes three native UIs and one shared core — AppKit on macOS, GTK4/libadwaita on Linux, Win32 on Windows — so each platform gets first-class integration.
+          cn: Alacritty 与 Kitty 使用跨平台 GUI 工具包（winit）。Ghostty 写三套原生 UI 与一个共享核心——macOS 上 AppKit，Linux 上 GTK4/libadwaita，Windows 上 Win32——每个平台获得一流集成。
+        confidence: 9
+        reference:
+          - docs/5-ghostty.en.md
+
+  - name:
+      en: install
+      cn: 安装
+    qa:
+      - id: how-to-install
+        question:
+          en: How do I install Ghostty?
+          cn: 如何安装 Ghostty？
+        answer:
+          en: Run x env use ghostty, use a package manager (brew install --cask ghostty on macOS, pacman -S ghostty on Arch, dnf install ghostty from Copr on Fedora), or download from ghostty.org/download.
+          cn: 运行 x env use ghostty，用包管理器（macOS 上 brew install --cask ghostty，Arch 上 pacman -S ghostty，Fedora 上从 Copr 用 dnf install ghostty），或从 ghostty.org/download 下载。
+        confidence: 9
+        reference:
+          - docs/5-ghostty.en.md
+
+      - id: gtk4-required
+        question:
+          en: Does Ghostty work on older GTK-only Linux distros?
+          cn: Ghostty 能在只支持 GTK 的老 Linux 发行版上用吗？
+        answer:
+          en: No — Ghostty 1.0 requires GTK4 / libadwaita on Linux. Older GTK3-only distros (Debian 11, CentOS 7) won't work.
+          cn: 不能 —— Ghostty 1.0 在 Linux 上要求 GTK4 / libadwaita。仅 GTK3 的老发行版（Debian 11、CentOS 7）无法工作。
+        confidence: 9
+        reference:
+          - docs/5-ghostty.en.md
+
+  - name:
+      en: configuration
+      cn: 配置
+    qa:
+      - id: config-format
+        question:
+          en: What config format does Ghostty use?
+          cn: Ghostty 用什么配置格式？
+        answer:
+          en: TOML. Located at ~/.config/ghostty/config. Run ghostty +show-config > ghostty.conf to generate a default with all options commented.
+          cn: TOML。位于 ~/.config/ghostty/config。运行 ghostty +show-config > ghostty.conf 生成带注释的默认配置。
+        confidence: 9
+        reference:
+          - docs/5-ghostty.en.md
+
+      - id: live-config-reload
+        question:
+          en: Does Ghostty reload config without restart?
+          cn: Ghostty 能在不重启的情况下重载配置吗？
+        answer:
+          en: Yes — edits to ~/.config/ghostty/config apply automatically on save.
+          cn: 可以 —— 编辑 ~/.config/ghostty/config 保存后自动生效。
+        confidence: 9
+        reference:
+          - docs/5-ghostty.en.md
+
+  - name:
+      en: features
+      cn: 功能
+    qa:
+      - id: tabs
+        question:
+          en: Does Ghostty have built-in tabs?
+          cn: Ghostty 有内置标签吗？
+        answer:
+          en: Not in 1.0 — tabs are planned for 1.2. Use tmux / zellij for splits and sessions; multi-window via the OS.
+          cn: 1.0 没有——标签计划在 1.2。分屏与会话用 tmux / zellij；多窗口通过 OS。
+        confidence: 9
+        reference:
+          - docs/5-ghostty.en.md
+
+      - id: image-protocols
+        question:
+          en: Which image protocols does Ghostty support?
+          cn: Ghostty 支持哪些图像协议？
+        answer:
+          en: Sixel since 1.0 (Aug 2026). iTerm2 and Kitty graphics are planned.
+          cn: 自 1.0（2026 年 8 月）起支持 Sixel。iTerm2 与 Kitty graphics 计划中。
+        confidence: 9
+        reference:
+          - docs/5-ghostty.en.md
+
+      - id: native-ui
+        question:
+          en: What is "native UI per platform"?
+          cn: 什么是 "每平台原生 UI"？
+        answer:
+          en: Ghostty uses AppKit (macOS), GTK4/libadwaita (Linux), or Win32 (Windows) directly — not Electron, not Qt, not a cross-platform toolkit. Menu bar, shortcuts, vibrancy, taskbar, and platform conventions all behave natively.
+          cn: Ghostty 直接使用 AppKit（macOS）、GTK4/libadwaita（Linux）或 Win32（Windows）——非 Electron，非 Qt，非跨平台工具包。菜单栏、快捷键、vibrancy、任务栏与平台约定都按原生行为。
+        confidence: 9
+        reference:
+          - docs/5-ghostty.en.md
+
+  - name:
+      en: limits
+      cn: 限制
+    qa:
+      - id: no-plugin-system
+        question:
+          en: Does Ghostty have a plugin / extension system?
+          cn: Ghostty 有插件 / 扩展系统吗？
+        answer:
+          en: No — no Lua, no kittens, no equivalents. The config is plain TOML; the binary is intentionally minimal.
+          cn: 没有 —— 没有 Lua、kittens 或等效物。配置是纯 TOML；二进制刻意保持极简。
+        confidence: 9
+        reference:
+          - docs/5-ghostty.en.md
+
+      - id: binary-size
+        question:
+          en: Is Ghostty the smallest GPU terminal?
+          cn: Ghostty 是最小的 GPU 终端吗？
+        answer:
+          en: No — Alacritty is smaller. Ghostty's binary includes the native UI shells (AppKit / GTK4 / Win32) which makes it larger.
+          cn: 不是 —— Alacritty 更小。Ghostty 的二进制包含原生 UI shell（AppKit / GTK4 / Win32），所以更大。
+        confidence: 8
+        reference:
+          - docs/5-ghostty.en.md
