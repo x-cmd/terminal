@@ -1,0 +1,155 @@
+id: x-t-2-alacritty
+
+data:
+  - name:
+      en: overview
+      cn: 概览
+    qa:
+      - id: what-is-alacritty
+        question:
+          en: What is Alacritty?
+          cn: 什么是 Alacritty？
+        answer:
+          en: A Rust-built, OpenGL ES 2.0-accelerated terminal emulator for Linux, macOS, BSD, and Windows. Apache-2.0 licensed. Deliberately does one thing — render text fast — and pairs with tmux / zellij for multiplexing.
+          cn: 用 Rust 编写的、OpenGL ES 2.0 加速的终端模拟器，支持 Linux、macOS、BSD、Windows。Apache-2.0 协议。故意只做一件事 —— 把文本渲染得快 —— 并搭配 tmux / zellij 做多路复用。
+        confidence: 9
+        reference:
+          - docs/2-alacritty.en.md
+          - docs/2-alacritty.cn.md
+
+      - id: who-maintains
+        question:
+          en: Who maintains Alacritty?
+          cn: 谁在维护 Alacritty？
+        answer:
+          en: Originally created by Joe Wilm in 2017. Now maintained by a community of contributors under the GitHub org alacritty/alacritty.
+          cn: 2017 年由 Joe Wilm 创立。现在由 alacritty/alacritty GitHub 组织下的社区贡献者维护。
+        confidence: 9
+        reference:
+          - docs/2-alacritty.en.md
+
+  - name:
+      en: install
+      cn: 安装
+    qa:
+      - id: how-to-install
+        question:
+          en: How do I install Alacritty?
+          cn: 如何安装 Alacritty？
+        answer:
+          en: Run x env use alacritty, or use a package manager (brew install --cask alacritty on macOS, apt install alacritty on Debian/Ubuntu, pacman -S alacritty on Arch), or download a pre-built binary from GitHub Releases, or cargo install alacritty from source.
+          cn: 运行 x env use alacritty，或用包管理器（macOS 上 brew install --cask alacritty，Debian/Ubuntu 上 apt install alacritty，Arch 上 pacman -S alacritty），或从 GitHub Releases 下载预构建二进制，或 cargo install alacritty 从源码构建。
+        confidence: 9
+        reference:
+          - docs/2-alacritty.en.md
+
+      - id: windows-requirements
+        question:
+          en: Does Alacritty work on Windows?
+          cn: Alacritty 在 Windows 上能用吗？
+        answer:
+          en: Yes — Alacritty has had it since 0.9 (April 2021). Requires Windows 10 v1809 or later for ConPTY support.
+          cn: 可以 —— Alacritty 自 0.9（2021 年 4 月）起支持 Windows。要求 Windows 10 v1809 或更新以获得 ConPTY 支持。
+        confidence: 9
+        reference:
+          - docs/2-alacritty.en.md
+
+  - name:
+      en: configuration
+      cn: 配置
+    qa:
+      - id: config-format
+        question:
+          en: What config format does Alacritty use?
+          cn: Alacritty 用什么配置格式？
+        answer:
+          en: TOML. As of 0.12 (December 2022), TOML replaced YAML as the config format. Existing alacritty.yml configs need to be renamed to alacritty.toml and reformatted.
+          cn: TOML。自 0.12（2022 年 12 月）起，TOML 取代 YAML 成为配置格式。现有 alacritty.yml 需要重命名为 alacritty.toml 并重新格式化。
+        confidence: 9
+        reference:
+          - docs/2-alacritty.en.md
+
+      - id: config-location
+        question:
+          en: Where does Alacritty look for its config?
+          cn: Alacritty 在哪里找配置文件？
+        answer:
+          en: On Unix/Linux/macOS: $XDG_CONFIG_HOME/alacritty/alacritty.toml, then ~/.config/alacritty/alacritty.toml, then ~/.alacritty.toml, then /etc/alacritty/alacritty.toml. On Windows: %APPDATA%\alacritty\alacritty.toml.
+          cn: Unix/Linux/macOS：$XDG_CONFIG_HOME/alacritty/alacritty.toml，然后 ~/.config/alacritty/alacritty.toml，然后 ~/.alacritty.toml，然后 /etc/alacritty/alacritty.toml。Windows：%APPDATA%\alacritty\alacritty.toml。
+        confidence: 9
+        reference:
+          - docs/2-alacritty.en.md
+
+      - id: live-config-reload
+        question:
+          en: Does Alacritty reload config without restart?
+          cn: Alacritty 能在不重启的情况下重载配置吗？
+        answer:
+          en: Yes — live config reload is on by default. Edits to alacritty.toml apply without restart. Disable with live_config_reload = false in the [general] table.
+          cn: 可以 —— 配置实时重载默认开启。编辑 alacritty.toml 后无需重启即可生效。在 [general] 表里设 live_config_reload = false 可以关闭。
+        confidence: 9
+        reference:
+          - docs/2-alacritty.en.md
+
+  - name:
+      en: usage
+      cn: 使用
+    qa:
+      - id: tabs-and-splits
+        question:
+          en: Does Alacritty have built-in tabs or splits?
+          cn: Alacritty 有内置标签页或分屏吗？
+        answer:
+          en: No — by design. Pair Alacritty with tmux, zellij, or a tiling window manager for splits and sessions.
+          cn: 没有 —— 这是设计上的选择。搭配 tmux、zellij 或平铺窗口管理器做分屏与会话。
+        confidence: 9
+        reference:
+          - docs/2-alacritty.en.md
+
+      - id: how-to-pair-tmux
+        question:
+          en: How do I pair Alacritty with tmux?
+          cn: 如何把 Alacritty 与 tmux 搭配？
+        answer:
+          en: Just install tmux and run tmux inside Alacritty. No special config needed. Use Ctrl-b % to split vertically, Ctrl-b " to split horizontally, Ctrl-b d to detach.
+          cn: 直接装 tmux 并在 Alacritty 里跑 tmux 即可，无需特殊配置。Ctrl-b % 垂直分屏，Ctrl-b " 水平分屏，Ctrl-b d 脱离会话。
+        confidence: 8
+        reference:
+          - docs/2-alacritty.en.md
+
+      - id: vim-mode
+        question:
+          en: Does Alacritty have a Vi mode?
+          cn: Alacritty 有 Vi 模式吗？
+        answer:
+          en: Yes — press Ctrl-Shift-Space to enter Vi mode. Use v to select, y to yank. Navigate scrollback with h/j/k/l.
+          cn: 有 —— 按 Ctrl-Shift-Space 进入 Vi 模式。用 v 选择，y 复制。用 h/j/k/l 在 scrollback 中导航。
+        confidence: 9
+        reference:
+          - docs/2-alacritty.en.md
+
+  - name:
+      en: requirements
+      cn: 要求
+    qa:
+      - id: opengl-version
+        question:
+          en: What OpenGL version does Alacritty need?
+          cn: Alacritty 需要什么版本的 OpenGL？
+        answer:
+          en: OpenGL ES 2.0 or higher. Most modern hardware supports this. Some older virtualized GPUs may have driver issues.
+          cn: OpenGL ES 2.0 或更高。绝大多数现代硬件都支持。一些较老的虚拟化 GPU 可能存在驱动问题。
+        confidence: 9
+        reference:
+          - docs/2-alacritty.en.md
+
+      - id: rust-required
+        question:
+          en: Do I need Rust to use Alacritty?
+          cn: 用 Alacritty 需要 Rust 吗？
+        answer:
+          en: No — only when building from source. Pre-built binaries are available for Linux, macOS, and Windows on GitHub Releases.
+          cn: 不需要 —— 仅在从源码构建时需要。GitHub Releases 上提供 Linux、macOS、Windows 的预构建二进制。
+        confidence: 9
+        reference:
+          - docs/2-alacritty.en.md

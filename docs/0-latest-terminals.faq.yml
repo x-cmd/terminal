@@ -1,0 +1,92 @@
+id: x-t-0-latest-terminals
+
+data:
+  - name:
+      en: overview
+      cn: 概览
+    qa:
+      - id: what-is-this-article
+        question:
+          en: What is this article?
+          cn: 这篇文章讲什么？
+        answer:
+          en: A quarterly snapshot of recent terminal-emulator releases and trends. Latest: Ghostty 1.0 (Aug 2026), WezTerm 2026.06, Kitty 0.43, Alacritty 0.13.2, Rio 0.2, Tabby 1.0.
+          cn: 终端模拟器近期发布与趋势的季度快照。最新：Ghostty 1.0（2026 年 8 月）、WezTerm 2026.06、Kitty 0.43、Alacritty 0.13.2、Rio 0.2、Tabby 1.0。
+        confidence: 9
+        reference:
+          - docs/0-latest-terminals.en.md
+          - docs/0-latest-terminals.cn.md
+
+      - id: biggest-trend
+        question:
+          en: What is the biggest trend in 2026?
+          cn: 2026 年最大的趋势是什么？
+        answer:
+          en: GPU rendering is now the default. Every notable new terminal ships a GPU-accelerated renderer (Metal, wgpu, OpenGL). CPU rendering is the legacy choice.
+          cn: GPU 渲染已成为默认。每个值得注意的新终端都自带 GPU 加速渲染器（Metal、wgpu、OpenGL）。CPU 渲染已成过去式。
+        confidence: 9
+        reference:
+          - docs/0-latest-terminals.en.md
+
+  - name:
+      en: breaking changes
+      cn: 破坏性变更
+    qa:
+      - id: alacritty-toml
+        question:
+          en: Did Alacritty change config formats?
+          cn: Alacritty 改配置格式了吗？
+        answer:
+          en: Yes — Alacritty 0.12+ uses TOML instead of YAML. Existing alacritty.yml configs need to be renamed and reformatted.
+          cn: 是的 —— Alacritty 0.12+ 改用 TOML 而非 YAML。现有 alacritty.yml 需要重命名并重新格式化。
+        confidence: 9
+        reference:
+          - docs/0-latest-terminals.en.md
+
+      - id: kitty-opengl-version
+        question:
+          en: Does Kitty need a newer OpenGL version now?
+          cn: Kitty 现在需要更新的 OpenGL 版本吗？
+        answer:
+          en: Yes — Kitty 0.42+ requires OpenGL 3.3 (was 3.0). Some older virtualized GPUs may need driver updates.
+          cn: 是的 —— Kitty 0.42+ 要求 OpenGL 3.3（旧为 3.0）。一些较老的虚拟化 GPU 可能需要更新驱动。
+        confidence: 9
+        reference:
+          - docs/0-latest-terminals.en.md
+
+      - id: ghostty-gtk4
+        question:
+          en: Did Ghostty drop GTK3 support?
+          cn: Ghostty 抛弃 GTK3 支持了吗？
+        answer:
+          en: Yes — Ghostty 1.0 removed the GTK3 fallback. GTK4 / libadwaita is required on Linux.
+          cn: 是的 —— Ghostty 1.0 移除了 GTK3 兜底。Linux 现在要求 GTK4 / libadwaita。
+        confidence: 9
+        reference:
+          - docs/0-latest-terminals.en.md
+
+  - name:
+      en: what to watch
+      cn: 值得关注的动向
+    qa:
+      - id: alacritty-0-14
+        question:
+          en: When does Alacritty 0.14 ship?
+          cn: Alacritty 0.14 什么时候发布？
+        answer:
+          en: No fixed date. 0.14 is in active development with a refactored renderer and improved scrollback. Track the GitHub repo for milestones.
+          cn: 暂无固定日期。0.14 在积极开发中，包含重构的渲染器和改进的 scrollback。可在 GitHub 仓库跟踪里程碑。
+        confidence: 7
+        reference:
+          - docs/0-latest-terminals.en.md
+
+      - id: ghostty-tabs
+        question:
+          en: Does Ghostty have tabs yet?
+          cn: Ghostty 有标签页了吗？
+        answer:
+          en: No — multi-window / tabs is the most-requested feature in Ghostty's issue tracker but is not in 1.0. Targeting 1.2.
+          cn: 没有 —— 多窗口 / 标签页是 Ghostty issue tracker 中被请求最多的功能，但 1.0 中没有。目标 1.2。
+        confidence: 8
+        reference:
+          - docs/0-latest-terminals.en.md

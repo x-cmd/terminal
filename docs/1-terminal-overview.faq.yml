@@ -1,0 +1,125 @@
+id: x-t-1-terminal-overview
+
+data:
+  - name:
+      en: picking a terminal
+      cn: 如何选择
+    qa:
+      - id: which-is-fastest
+        question:
+          en: Which terminal is the fastest?
+          cn: 哪个终端最快？
+        answer:
+          en: Alacritty is widely considered the smallest and fastest GPU terminal. Pair it with tmux for sessions.
+          cn: Alacritty 被广泛认为是最小、最快的 GPU 终端。搭配 tmux 处理会话。
+        confidence: 8
+        reference:
+          - docs/1-terminal-overview.en.md
+          - docs/2-alacritty.en.md
+
+      - id: which-has-built-in-multiplexer
+        question:
+          en: Which terminal has a built-in multiplexer?
+          cn: 哪个终端内置多路复用器？
+        answer:
+          en: Kitty, WezTerm, iTerm2, Windows Terminal, Konsole, and Tabby all have built-in multiplexer features. Alacritty, Ghostty, Rio, foot, and st pair with tmux / zellij instead.
+          cn: Kitty、WezTerm、iTerm2、Windows Terminal、Konsole、Tabby 都有内置多路复用器。Alacritty、Ghostty、Rio、foot、st 则搭配 tmux / zellij。
+        confidence: 9
+        reference:
+          - docs/1-terminal-overview.en.md
+
+      - id: which-for-macos
+        question:
+          en: Which terminal is best on macOS?
+          cn: macOS 上哪个终端最好？
+        answer:
+          en: iTerm2 is the long-time default for users who want a feature-rich terminal with a GUI config editor. Alacritty, Kitty, and Ghostty are the GPU-accelerated alternatives. Ghostty 1.0 ships native AppKit UI.
+          cn: iTerm2 是想要 GUI 配置编辑器的功能丰富的终端用户的长期默认选择。Alacritty、Kitty、Ghostty 是 GPU 加速的替代方案。Ghostty 1.0 提供原生 AppKit UI。
+        confidence: 8
+        reference:
+          - docs/1-terminal-overview.en.md
+
+      - id: which-for-windows
+        question:
+          en: Which terminal is best on Windows?
+          cn: Windows 上哪个终端最好？
+        answer:
+          en: Windows Terminal is Microsoft's official choice with a DirectX renderer and built-in tabs/panes. Alacritty, WezTerm, Ghostty, and Tabby are cross-platform alternatives that work well on Windows.
+          cn: Windows Terminal 是微软官方选择，使用 DirectX 渲染器并内置标签 / 面板。Alacritty、WezTerm、Ghostty、Tabby 是跨平台替代方案，在 Windows 上表现良好。
+        confidence: 8
+        reference:
+          - docs/1-terminal-overview.en.md
+
+      - id: which-for-wayland
+        question:
+          en: Which terminal is best on Wayland?
+          cn: Wayland 上哪个终端最好？
+        answer:
+          en: foot is purpose-built for Wayland (wlroots-based). Alacritty, Kitty, WezTerm, Ghostty, and Konsole all support Wayland. st is X11-only.
+          cn: foot 是为 Wayland 专门构建的（基于 wlroots）。Alacritty、Kitty、WezTerm、Ghostty、Konsole 都支持 Wayland。st 仅 X11。
+        confidence: 8
+        reference:
+          - docs/1-terminal-overview.en.md
+
+  - name:
+      en: concepts
+      cn: 概念
+    qa:
+      - id: what-is-multiplexer
+        question:
+          en: What is a terminal multiplexer?
+          cn: 什么是终端多路复用器？
+        answer:
+          en: A program that lets one terminal window manage multiple sessions — split panes, tabs, persistent sessions that survive disconnects. tmux and zellij are the most common external multiplexers.
+          cn: 让一个终端窗口管理多个会话的程序 —— 分屏面板、标签页、断开连接后仍存活的持久会话。tmux 和 zellij 是最常见的外部多路复用器。
+        confidence: 9
+        reference:
+          - docs/1-terminal-overview.en.md
+
+      - id: tmux-vs-zellij
+        question:
+          en: tmux vs zellij — which one?
+          cn: tmux 还是 zellij？
+        answer:
+          en: tmux is the long-time default with a vast plugin ecosystem. zellij is a newer Rust alternative with a friendlier default UX. Both work with any terminal emulator.
+          cn: tmux 是长期默认，有庞大的插件生态。zellij 是较新的 Rust 替代方案，默认 UX 更友好。两者都适用于任何终端模拟器。
+        confidence: 7
+        reference:
+          - docs/1-terminal-overview.en.md
+
+      - id: gpu-vs-cpu-rendering
+        question:
+          en: What's the difference between GPU and CPU rendering?
+          cn: GPU 和 CPU 渲染有什么区别？
+        answer:
+          en: GPU rendering uses the graphics card to draw text glyphs (smooth on heavy output like cat huge.log). CPU rendering uses the main CPU (slower on heavy output but fine for daily work).
+          cn: GPU 渲染用显卡绘制文本字形（在 cat huge.log 等重输出下流畅）。CPU 渲染用主 CPU（重输出下较慢但日常够用）。
+        confidence: 9
+        reference:
+          - docs/1-terminal-overview.en.md
+
+  - name:
+      en: not a terminal
+      cn: 不是终端
+    qa:
+      - id: is-tmux-a-terminal
+        question:
+          en: Is tmux a terminal emulator?
+          cn: tmux 是终端模拟器吗？
+        answer:
+          en: No — tmux is a terminal multiplexer. It runs INSIDE a terminal emulator (Alacritty, Kitty, etc.).
+          cn: 不是 —— tmux 是终端多路复用器。它跑在终端模拟器（Alacritty、Kitty 等）*里面*。
+        confidence: 9
+        reference:
+          - docs/1-terminal-overview.en.md
+
+      - id: is-vscode-terminal-a-terminal
+        question:
+          en: Is VS Code's integrated terminal a terminal emulator?
+          cn: VS Code 的集成终端是终端模拟器吗？
+        answer:
+          en: Technically yes, but it's embedded in an editor rather than standalone. For most workflows it's a separate category.
+          cn: 技术上是的，但它内嵌在编辑器里而不是独立的。对大多数工作流来说，它是单独一类。
+        confidence: 8
+        reference:
+          - docs/1-terminal-overview.en.md
