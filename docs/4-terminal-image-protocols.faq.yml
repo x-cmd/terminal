@@ -1,0 +1,81 @@
+id: x-t-4-terminal-image-protocols
+
+data:
+  - name:
+      en: overview
+      cn: 概览
+    qa:
+      - id: what-are-protocols
+        question:
+          en: What are the three terminal image protocols?
+          cn: 什么是三种终端图像协议？
+        answer:
+          en: Sixel (1980s DEC VT340, pixel-level 6 bits/char, pure data), iTerm2 image (2009, base64 PNG/JPEG, frame-based, pure data), and Kitty graphics (2018, multi-command, supports path mode + shared memory).
+          cn: Sixel（1980 年代 DEC VT340，像素级 6 位/字符，纯数据）、iTerm2 image（2009，base64 PNG/JPEG，帧级，纯数据）、Kitty graphics（2018，多命令，支持路径模式 + 共享内存）。
+        confidence: 9
+        reference:
+          - docs/4-terminal-image-protocols.en.md
+          - docs/4-terminal-image-protocols.cn.md
+
+      - id: which-protocol-best
+        question:
+          en: Which image protocol should I use?
+          cn: 我应该用哪个图像协议？
+        answer:
+          en: Enable all three in your terminal config; each program picks what it supports. For legacy code, Sixel works in most terminals. For animations / high-throughput, Kitty graphics (with shared-memory mode). For simple images, iTerm2 image.
+          cn: 在你的终端配置里启用三种；每个程序选它支持的。遗留代码，Sixel 在大多数终端能用。动画 / 高吞吐，Kitty graphics（带共享内存模式）。只要图，iTerm2 image。
+        confidence: 9
+        reference:
+          - docs/4-terminal-image-protocols.en.md
+
+  - name:
+      en: compatibility
+      cn: 兼容性
+    qa:
+      - id: which-terminals-support-what
+        question:
+          en: Which terminals support which image protocol?
+          cn: 哪些终端支持哪些图像协议？
+        answer:
+          en: Kitty supports all three. WezTerm supports Sixel + iTerm2 image. Ghostty (since 1.0) supports Sixel. iTerm2 supports Sixel + iTerm2 image. Alacritty + foot + GNOME Terminal + Konsole support Sixel only. Windows Terminal + st have no image protocols.
+          cn: Kitty 三者都支持。WezTerm 支持 Sixel + iTerm2 image。Ghostty（自 1.0）支持 Sixel。iTerm2 支持 Sixel + iTerm2 image。Alacritty + foot + GNOME Terminal + Konsole 仅 Sixel。Windows Terminal + st 无图像协议。
+        confidence: 9
+        reference:
+          - docs/4-terminal-image-protocols.en.md
+
+      - id: best-for-image-rich
+        question:
+          en: Which terminal is best for image-rich workflows?
+          cn: 哪个终端最适合图像丰富的工作流？
+        answer:
+          en: Kitty — supports all three protocols, has shared-memory mode for high throughput, and integrates with yazi / viu / chafa.
+          cn: Kitty —— 支持三种协议，有共享内存模式追求高吞吐，与 yazi / viu / chafa 集成。
+        confidence: 9
+        reference:
+          - docs/4-terminal-image-protocols.en.md
+
+  - name:
+      en: security
+      cn: 安全
+    qa:
+      - id: which-protocol-safe
+        question:
+          en: Which image protocol is safest?
+          cn: 哪个图像协议最安全？
+        answer:
+          en: Sixel and iTerm2 image are pure data — no security risk. Kitty graphics supports path mode in addition to data mode; terminals refuse paths outside CWD by default (safe-mode default).
+          cn: Sixel 与 iTerm2 image 是纯数据——无安全风险。Kitty graphics 除数据模式外还支持路径模式；终端默认拒绝 CWD 外的路径（safe-mode 默认）。
+        confidence: 9
+        reference:
+          - docs/4-terminal-image-protocols.en.md
+
+      - id: kitty-path-mode-risk
+        question:
+          en: What's the risk of Kitty graphics path mode?
+          cn: Kitty graphics 路径模式的风险是什么？
+        answer:
+          en: A malicious image path could read arbitrary files (e.g. /etc/passwd) or fetch remote URLs (leaking IP). Mitigated by Kitty's safe_image_protocol setting (refuses paths outside CWD by default).
+          cn: 恶意图像路径可能读取任意文件（如 /etc/passwd）或抓取远程 URL（泄露 IP）。Kitty 的 safe_image_protocol 设置默认拒绝 CWD 外的路径作为缓解。
+        confidence: 9
+        reference:
+          - docs/4-terminal-image-protocols.en.md
