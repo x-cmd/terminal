@@ -28,9 +28,18 @@ x-cmd/terminal/
     ├── 1-terminal-overview.{en,cn}.md       # overview + horizontal comparison
     ├── 1-terminal-overview.llms.md
     ├── 1-terminal-overview.faq.yml
-    ├── 2-alacritty.{en,cn}.md               # Alacritty deep dive
-    ├── 2-alacritty.llms.md
-    └── 2-alacritty.faq.yml
+    ├── 2-terminal-security.{en,cn}.md       # security: attack surfaces, sandboxing, isolation
+    ├── 2-terminal-security.llms.md
+    ├── 2-terminal-security.faq.yml
+    ├── 3-terminal-performance.{en,cn}.md     # performance & resource use (GPU vs CPU, memory)
+    ├── 3-terminal-performance.llms.md
+    ├── 3-terminal-performance.faq.yml
+    ├── 4-terminal-image-protocols.{en,cn}.md # image protocols: Sixel vs iTerm2 vs Kitty
+    ├── 4-terminal-image-protocols.llms.md
+    ├── 4-terminal-image-protocols.faq.yml
+    ├── 5-terminal-multiplexer.{en,cn}.md     # multiplexer strategies: tmux vs zellij vs built-in
+    ├── 5-terminal-multiplexer.llms.md
+    └── 5-terminal-multiplexer.faq.yml
 ```
 
 The leading integer in the filename is the reading order.
@@ -43,7 +52,7 @@ Articles are kept in sync across all four files per slot:
 | --- | --- | --- |
 | `0-` | Latest terminals | What's new in terminal emulators — recent releases, trends, breaking changes. Newsletter-style. |
 | `1-` | Terminal overview | Big-picture map of the terminal-emulator space; one comparison table across the main alternatives. |
-| `2-…` | Per-terminal deep dives | One article per notable terminal — what it is, install, config, when to use / not use. |
+| `2-…` | Angle / perspective analysis | One article per **angle** — security, performance, image protocols, multiplexer strategies. Not per-tool tutorials; install / config live at `x-cmd.com/install/<slug>` and `x-cmd.com/doc-2026/install/<slug>`. |
 
 ## Sister repos
 
@@ -52,6 +61,7 @@ Articles are kept in sync across all four files per slot:
 - [`x-cmd/browser`](https://github.com/x-cmd/browser) — web browser topic library (parallel structure).
 - [`x-cmd/install`](https://github.com/x-cmd/install) — install database (drives `x install <name>`).
 - [`x-cmd/x-cmd`](https://github.com/x-cmd/x-cmd) — module source (`mod/`).
+- [`x-cmd/doc-2026`](https://github.com/x-cmd/doc-2026) — main site docs (per-tool articles at `data/install/<slug>/<name>.*`).
 
 ## License
 

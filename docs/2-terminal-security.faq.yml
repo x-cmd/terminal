@@ -1,0 +1,103 @@
+id: x-t-2-terminal-security
+
+data:
+  - name:
+      en: threats
+      cn: 威胁
+    qa:
+      - id: what-is-trust-boundary
+        question:
+          en: What is the "trust boundary" in a terminal?
+          cn: 终端的"信任边界"是什么？
+        answer:
+          en: The line between arbitrary untrusted text (CI logs, AI tool output, chat, network dumps) and host execution. Anything that crosses the boundary — OSC 9 (shell), OSC 52 (clipboard), OSC 8 (URLs), inline images (paths) — is a potential threat vector.
+          cn: 任意不受信文本（CI 日志、AI 工具输出、聊天、网络转储）与主机执行之间的分界。任何跨越它的事物——OSC 9（shell）、OSC 52（剪贴板）、OSC 8（URL）、内嵌图像（路径）——是潜在威胁向量。
+        confidence: 9
+        reference:
+          - docs/2-terminal-security.en.md
+          - docs/2-terminal-security.cn.md
+
+      - id: escape-to-shell
+        question:
+          en: What is "escape-to-shell"?
+          cn: 什么是 "逃逸到 shell"？
+        answer:
+          en: A terminal emits an escape sequence that, on a GUI click or specific input, triggers an external command. The most-cited historical example is iTerm2's OSC 9;1;command ST, removed in iTerm2 3.4 (2017). Modern terminals block OSC 9 by default.
+          cn: 终端发出一个序列，在 GUI 点击或特定输入时触发外部命令。历史上被引用最多的例子是 iTerm2 的 OSC 9;1;command ST，于 iTerm2 3.4（2017）移除。现代终端默认屏蔽 OSC 9。
+        confidence: 9
+        reference:
+          - docs/2-terminal-security.en.md
+
+      - id: osc-52-clipboard
+        question:
+          en: Can a website overwrite my clipboard?
+          cn: 网站能覆盖我的剪贴板吗？
+        answer:
+          en: If your terminal honors OSC 52 (set-clipboard), then yes — an attacker can print OSC 52;c;...ST in any text you cat to the terminal. Most modern terminals default to off; verify in settings.
+          cn: 如果你的终端支持 OSC 52（设置剪贴板），那么是的——攻击者可以在你 cat 到终端的任何文本里打印 OSC 52;c;...ST。大多数现代终端默认关；在设置里确认。
+        confidence: 9
+        reference:
+          - docs/2-terminal-security.en.md
+
+  - name:
+      en: mitigations
+      cn: 缓解
+    qa:
+      - id: shell-integration
+        question:
+          en: What is OSC 133 / shell integration?
+          cn: 什么是 OSC 133 / shell 集成？
+        answer:
+          en: A protocol that marks each command's start and end in scrollback. Lets the terminal know when output is trusted (from a just-typed command) vs untrusted (from a previous command or pasted text). The most effective single mitigation for escape-to-shell attacks.
+          cn: 在 scrollback 中标记每个命令的开始与结束的协议。让终端知道输出何时是受信任的（来自刚输入的命令）vs 不受信任的（来自之前的命令或粘贴文本）。逃逸到 shell 攻击最有效的单一缓解。
+        confidence: 9
+        reference:
+          - docs/2-terminal-security.en.md
+
+      - id: secure-input-mode
+        question:
+          en: What is secure-input mode?
+          cn: 什么是 secure-input 模式？
+        answer:
+          en: A terminal mode where escape-sequence interpretation is disabled while the user is typing. Used for password / key entry. Auto-detected by most modern terminals when a prompt looks like a password prompt.
+          cn: 用户输入时禁用转义序列解释的终端模式。用于密码 / 密钥输入。大多数现代终端在提示看起来像密码提示时自动检测。
+        confidence: 8
+        reference:
+          - docs/2-terminal-security.en.md
+
+      - id: which-terminals-support-osc-133
+        question:
+          en: Which terminals support OSC 133 / shell integration?
+          cn: 哪些终端支持 OSC 133 / shell 集成？
+        answer:
+          en: Alacritty, Kitty, WezTerm, Ghostty (since 1.0), iTerm2 — supported. Windows Terminal, GNOME Terminal — not supported yet. st, foot — limited or no support.
+          cn: Alacritty、Kitty、WezTerm、Ghostty（自 1.0）、iTerm2——支持。Windows Terminal、GNOME Terminal——暂不支持。st、foot——有限或不支持。
+        confidence: 8
+        reference:
+          - docs/2-terminal-security.en.md
+
+  - name:
+      en: image protocols
+      cn: 图像协议
+    qa:
+      - id: kitty-safe-mode
+        question:
+          en: What is Kitty graphics safe-mode?
+          cn: 什么是 Kitty graphics safe-mode？
+        answer:
+          en: A setting that refuses image paths outside the current working directory. Prevents a malicious image path (e.g. /etc/passwd, http://attacker.tld/x.png) from being fetched. On by default in recent Kitty.
+          cn: 拒绝 CWD 外图像路径的设置。防止恶意图像路径（如 /etc/passwd、http://attacker.tld/x.png）被获取。近期 Kitty 默认开启。
+        confidence: 9
+        reference:
+          - docs/2-terminal-security.en.md
+
+      - id: sixel-safe
+        question:
+          en: Is Sixel safe?
+          cn: Sixel 安全吗？
+        answer:
+          en: Sixel is data-only — no path mode. Safe by default. iTerm2's image protocol is also data-only. Only Kitty's graphics protocol supports paths; safe-mode mitigates.
+          cn: Sixel 是纯数据——无路径模式。默认安全。iTerm2 的图像协议也是纯数据。只有 Kitty 的 graphics 协议支持路径；safe-mode 提供缓解。
+        confidence: 9
+        reference:
+          - docs/2-terminal-security.en.md
