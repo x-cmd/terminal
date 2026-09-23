@@ -1,0 +1,81 @@
+id: x-t-5-terminal-multiplexer
+
+data:
+  - name:
+      en: tmux vs zellij
+      cn: tmux vs zellij
+    qa:
+      - id: tmux-vs-zellij
+        question:
+          en: tmux vs zellij — which one?
+          cn: tmux vs zellij——选哪个？
+        answer:
+          en: tmux is the mature default — better plugin ecosystem (tpm, tmux-resurrect, tmux-continuum), server-friendly, steep learning curve. zellij is the modern Rust alternative — better UX defaults (discoverable keybindings, status bar), WASM plugins, smaller ecosystem.
+          cn: tmux 是成熟默认——插件生态更好（tpm、tmux-resurrect、tmux-continuum）、服务器友好、学习曲线陡。zellij 是现代 Rust 替代——UX 默认更好（可发现键绑定、状态栏）、WASM 插件、生态较小。
+        confidence: 8
+        reference:
+          - docs/5-terminal-multiplexer.en.md
+          - docs/5-terminal-multiplexer.cn.md
+
+      - id: built-in-vs-external
+        question:
+          en: Built-in multiplexer or external (tmux/zellij)?
+          cn: 内置多路复用器还是外部（tmux/zellij）？
+        answer:
+          en: External for persistence + server work + session sharing + Alacritty/foot/Ghostty pairing. Built-in for local-only work + multiplexer + scripting in one binary (WezTerm).
+          cn: 外部用于持久化 + 服务器工作 + 会话共享 + Alacritty/foot/Ghostty 搭配。内置用于仅本地工作 + 多路复用 + 脚本一个二进制（WezTerm）。
+        confidence: 8
+        reference:
+          - docs/5-terminal-multiplexer.en.md
+
+  - name:
+      en: persistence
+      cn: 持久化
+    qa:
+      - id: which-persist
+        question:
+          en: Which multiplexer persists across disconnects?
+          cn: 哪个多路复用器跨断开持久化？
+        answer:
+          en: External (tmux / zellij / screen) — sessions live on the host and survive disconnects. Built-in (Kitty / iTerm2 / Windows Terminal / Konsole) — sessions lost on close. WezTerm can persist via Lua; cross-machine via wezterm connect ssh://.
+          cn: 外部（tmux / zellij / screen）——会话活在主机上，断开后存活。内置（Kitty / iTerm2 / Windows Terminal / Konsole）——关闭即失。WezTerm 可以通过 Lua 持久化；通过 wezterm connect ssh:// 跨机器。
+        confidence: 9
+        reference:
+          - docs/5-terminal-multiplexer.en.md
+
+      - id: wezterm-cross-machine
+        question:
+          en: Can WezTerm mux sessions survive machine change?
+          cn: WezTerm 多路复用器会话能跨机器存活吗？
+        answer:
+          en: WezTerm supports wezterm connect ssh://user@host — connect to a remote wezterm-mux-server, session state lives on the remote host. Survives client machine changes (reconnect from a different laptop).
+          cn: WezTerm 支持 wezterm connect ssh://user@host——连到远程 wezterm-mux-server，会话状态活在远程主机。跨客户端机器变化存活（从另一台笔记本重连）。
+        confidence: 8
+        reference:
+          - docs/5-terminal-multiplexer.en.md
+
+  - name:
+      en: pairing
+      cn: 共享
+    qa:
+      - id: pair-programming
+        question:
+          en: How do I pair-program over SSH?
+          cn: 如何通过 SSH 结对编程？
+        answer:
+          en: Server: tmux new -s pair. Each participant: ssh user@server -t 'tmux attach -t pair'. Both see the same panes in real time.
+          cn: 服务端：tmux new -s pair。每个参与者：ssh user@server -t 'tmux attach -t pair'。两人实时看到相同面板。
+        confidence: 9
+        reference:
+          - docs/5-terminal-multiplexer.en.md
+
+      - id: pairing-on-terminal
+        question:
+          en: Can Kitty / WezTerm / iTerm2 do pair programming?
+          cn: Kitty / WezTerm / iTerm2 能做结对编程吗？
+        answer:
+          en: WezTerm: yes, via wezterm connect to a shared mux server. Kitty / iTerm2: no built-in; pair via tmux instead.
+          cn: WezTerm：可以，通过 wezterm connect 到共享 mux 服务器。Kitty / iTerm2：没有内置；改用 tmux 来做结对。
+        confidence: 7
+        reference:
+          - docs/5-terminal-multiplexer.en.md
