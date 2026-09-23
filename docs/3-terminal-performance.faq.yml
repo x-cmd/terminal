@@ -1,0 +1,92 @@
+id: x-t-3-terminal-performance
+
+data:
+  - name:
+      en: axes
+      cn: 轴
+    qa:
+      - id: what-is-fastest
+        question:
+          en: Which terminal is the fastest?
+          cn: 哪个终端最快？
+        answer:
+          en: Alacritty is the fastest on heavy-output throughput benchmarks (vtebench). Kitty, WezTerm, and Ghostty are comparable for scrolling. iTerm2 is fast on Apple silicon.
+          cn: Alacritty 在重输出吞吐基准（vtebench）上最快。Kitty、WezTerm、Ghostty 滚动相当。iTerm2 在 Apple silicon 上快。
+        confidence: 8
+        reference:
+          - docs/3-terminal-performance.en.md
+          - docs/3-terminal-performance.cn.md
+
+      - id: gpu-vs-cpu
+        question:
+          en: GPU or CPU terminal — which is better?
+          cn: GPU 还是 CPU 终端——哪个更好？
+        answer:
+          en: GPU wins heavy output (smooth scrolling); CPU wins idle memory + idle energy. Default to GPU for dev work (Alacritty / Kitty / WezTerm / Ghostty); pick CPU for battery (foot) or servers (st / foot).
+          cn: GPU 在重输出上胜出（滚动顺畅）；CPU 在闲置内存与能耗上胜出。开发默认 GPU（Alacritty / Kitty / WezTerm / Ghostty）；电池选 CPU（foot）或服务器（st / foot）。
+        confidence: 9
+        reference:
+          - docs/3-terminal-performance.en.md
+
+      - id: smallest-memory
+        question:
+          en: Which terminal has the smallest idle memory?
+          cn: 哪个终端闲置内存最小？
+        answer:
+          en: st ~5-15 MB; foot ~10-25 MB; Alacritty ~5-15 MB. Among GUI terminals, foot is the leanest (Wayland-native, wlroots-based).
+          cn: st 约 5-15 MB；foot 约 10-25 MB；Alacritty 约 5-15 MB。GUI 终端中 foot 最瘦（Wayland 原生，基于 wlroots）。
+        confidence: 9
+        reference:
+          - docs/3-terminal-performance.en.md
+
+  - name:
+      en: benchmarks
+      cn: 基准
+    qa:
+      - id: vtebench
+        question:
+          en: What is vtebench?
+          cn: 什么是 vtebench？
+        answer:
+          en: A standardized benchmark from the Alacritty team for measuring terminal rendering, scrolling, and parsing performance. Use it to compare terminals on your hardware.
+          cn: Alacritty 团队的标准化基准，用于衡量终端的渲染、滚动、解析性能。用它在你自己的硬件上比较终端。
+        confidence: 9
+        reference:
+          - docs/3-terminal-performance.en.md
+
+      - id: heavy-output
+        question:
+          en: Why does cat huge.log stutter in some terminals?
+          cn: 为什么 cat huge.log 在某些终端卡顿？
+        answer:
+          en: CPU terminals (VTE / libvterm / Xlib) saturate the CPU when text arrives faster than it can render. GPU terminals render text to a glyph atlas on the GPU, which parallelizes the work — 60 FPS sustained.
+          cn: CPU 终端（VTE / libvterm / Xlib）在文本到达速度超过渲染能力时 CPU 饱和。GPU 终端把文本渲染到 GPU 上的字形图集，并行化工作——保持 60 FPS。
+        confidence: 9
+        reference:
+          - docs/3-terminal-performance.en.md
+
+  - name:
+      en: energy
+      cn: 能耗
+    qa:
+      - id: battery-life
+        question:
+          en: Which terminal is best on a battery-constrained laptop?
+          cn: 电池受限笔记本上哪个终端最好？
+        answer:
+          en: foot (CPU terminal, Wayland-native, very low idle energy). For GPU options, Ghostty 1.0+ and iTerm2 on Apple silicon are competitive on idle energy.
+          cn: foot（CPU 终端，Wayland 原生，闲置能耗极低）。GPU 选项中，Ghostty 1.0+ 与 iTerm2 在 Apple silicon 上闲置能耗有竞争力。
+        confidence: 8
+        reference:
+          - docs/3-terminal-performance.en.md
+
+      - id: gpu-idle-energy
+        question:
+          en: Do GPU terminals drain battery more?
+          cn: GPU 终端更耗电池吗？
+        answer:
+          en: On idle, yes — the GPU compositor is always on. Under heavy output, no — the GPU parallelizes the work faster than the CPU would. The crossover depends on the workload.
+          cn: 闲置时是的——GPU 合成器始终开启。重输出时不会——GPU 比 CPU 更快地并行化工作。交叉点取决于工作负载。
+        confidence: 8
+        reference:
+          - docs/3-terminal-performance.en.md
